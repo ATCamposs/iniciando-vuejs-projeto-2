@@ -16,19 +16,11 @@ export default {
   data() {
     return {
       titulo: 'Banco de imagens de gatinhos',
-      fotos: [
-        {
-          url:
-            'https://cdn.pixabay.com/photo/2012/11/26/13/58/cat-67345_960_720.jpg',
-          titulo: 'Gato olhando para camera',
-        },
-        {
-          url:
-            'https://cdn.pixabay.com/photo/2012/11/26/13/58/cat-67345_960_720.jpg',
-          titulo: 'Gato olhando para camera',
-        },
-      ],
+      fotos: [],
     }
+  },
+  created() {
+    alert('CRIEI OS COMPONENTES')
   },
 }
 </script>
