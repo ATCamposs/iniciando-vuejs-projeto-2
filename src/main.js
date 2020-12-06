@@ -4,8 +4,8 @@ import App from './App.vue'
 
 Vue.use(VueResource)
 
-const vue = new Vue({
+// eslint-disable-next-line no-new
+new Vue({
   el: '#app',
   render: (h) => h(App),
 })
-vue()
