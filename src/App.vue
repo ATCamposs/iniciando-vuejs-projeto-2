@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1>{{ titulo }}</h1>
-    <img src="{{ foto.url }}" alt="{{ foto.titulo }}" />
+    <!-- posso usar também <h1>{{ titulo }}</h1>-->
+    <h1 v-text="titulo"></h1>
+    <!-- no lugar de usar v-bind posso usar somente :atributo -->
+    <img :src="foto.url" :alt="foto.titulo" />
   </div>
 </template>
 
