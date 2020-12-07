@@ -7,7 +7,11 @@ import { routes } from './routes'
 Vue.use(VueResource)
 // Criação do routes e chamada da rota
 Vue.use(VueRouter)
-const router = new VueRouter({ routes })
+const router = new VueRouter({
+  routes,
+  // remove a # dos links
+  mode: 'history',
+})
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
