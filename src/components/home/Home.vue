@@ -22,7 +22,7 @@
           <meu-botao
             tipo="button"
             rotulo="REMOVER"
-            @click.native="remove(foto)"
+            @botaoAtivado="remove($event, foto)"
           />
         </meu-painel>
       </li>
@@ -76,7 +76,8 @@ export default {
   },
 
   methods: {
-    remove(foto) {
+    remove($event, foto) {
+      alert($event)
       alert('Remover a foto' + foto.titulo)
     },
   },
