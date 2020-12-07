@@ -17,10 +17,8 @@
         class="lista-fotos-item"
       >
         <meu-painel :titulo="foto.titulo">
-          <imagem-responsiva
-            :url="foto.url"
-            :titulo="foto.titulo"
-          ></imagem-responsiva>
+          <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
+          <meu-botao tipo="button" rotulo="REMOVER" />
         </meu-painel>
       </li>
     </ul>
@@ -30,10 +28,12 @@
 <script>
 import ImagemResponsiva from '../shared/imagem-responsiva/imagemResponsiva'
 import Painel from '../shared/painel/Painel'
+import Botao from '../shared/botao/Botao'
 export default {
   components: {
     'meu-painel': Painel,
     'imagem-responsiva': ImagemResponsiva,
+    'meu-botao': Botao,
   },
 
   data() {
