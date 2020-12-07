@@ -2,9 +2,20 @@
   <div clas="corpo">
     <!-- posso usar também <h1>{{ titulo }}</h1>-->
     <h1 class="centralizado" v-text="titulo"></h1>
+
+    <input
+      type="search"
+      class="filtro"
+      placeholder="filtre por parte do titulo"
+      @input="filtro = $event.target.value"
+    />
     <!-- no lugar de usar v-bind posso usar somente :atributo -->
     <ul class="lista-fotos">
-      <li v-for="foto of fotos" :key="foto.titulo" class="lista-fotos-item">
+      <li
+        v-for="foto of fotosComFiltro"
+        :key="foto.titulo"
+        class="lista-fotos-item"
+      >
         <meu-painel :titulo="foto.titulo">
           <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo" />
         </meu-painel>
@@ -24,8 +35,21 @@ export default {
     return {
       titulo: 'Banco de imagens de gatinhos',
       fotos: [],
+      filtro: '',
     }
   },
+
+  computed: {
+    fotosComFiltro() {
+      if (this.filtro) {
+        const exp = new RegExp(this.filtro.trim(), 'i')
+        return this.fotos.filter((foto) => exp.test(foto.titulo))
+      } else {
+        return this.fotos
+      }
+    },
+  },
+
   created() {
     // jeito mais facil
     this.$http
@@ -63,6 +87,11 @@ export default {
 }
 
 .imagem-responsiva {
+  width: 100%;
+}
+
+.filtro {
+  display: block;
   width: 100%;
 }
 </style>
