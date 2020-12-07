@@ -1,5 +1,7 @@
 <template>
-  <div class="corpo"></div>
+  <div class="corpo">
+    <router-view></router-view>
+  </div>
   <!--hora vai exibir um componente, hora outro(rotas) -->
 </template>
 
