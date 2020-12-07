@@ -19,10 +19,14 @@
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
           <!-- Ao adicionar .native no componente ele suporta ex @click -->
+          <!-- Ao usar databind(:) na confirmacao, o valor não vai como uma
+          string, e sim como um dado, oque aceita outros tipos alem (de string) -->
           <meu-botao
             tipo="button"
             rotulo="REMOVER"
-            @botaoAtivado="remove($event, foto)"
+            :confirmacao="true"
+            estilo="padrao"
+            @botaoAtivado="remove(foto)"
           />
         </meu-painel>
       </li>
@@ -77,7 +81,6 @@ export default {
 
   methods: {
     remove($event, foto) {
-      alert($event)
       alert('Remover a foto' + foto.titulo)
     },
   },
