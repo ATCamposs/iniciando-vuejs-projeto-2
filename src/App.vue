@@ -1,22 +1,21 @@
 <template>
   <div class="corpo">
-    <nav>
-      <ul>
-        <li v-for="route in routes" :key="route.path">
-          <router-link :to="route.path ? route.path : '/'">{{
-            route.titulo
-          }}</router-link>
-        </li>
-      </ul>
-    </nav>
-    <router-view></router-view>
+    <meu-menu :rotas="routes"></meu-menu>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
   <!--hora vai exibir um componente, hora outro(rotas) -->
 </template>
 
 <script>
 import { routes } from './routes'
+import Menu from './components/shared/menu/Menu'
 export default {
+  components: {
+    'meu-menu': Menu,
+  },
+
   data() {
     return {
       routes,
@@ -30,5 +29,15 @@ export default {
   font-family: Helvetica, sans-serif;
   width: 96%;
   margin: 0 auto;
+}
+
+.pagina-enter,
+.pagina-leave-active {
+  opacity: 0;
+}
+
+.pagina-enter-active,
+.pagina-leave-active {
+  transition: opacity 0.4s;
 }
 </style>
