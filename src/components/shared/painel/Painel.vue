@@ -16,8 +16,8 @@ export default {
   },
 }
 </script>
-
-<style>
+<!-- Para deixar o css para somente o componente etc use <style scoped> -->
+<style scoped>
 /* estilo do painel */
 .painel {
   padding: 0 auto;
