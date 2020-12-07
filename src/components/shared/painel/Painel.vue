@@ -1,7 +1,8 @@
 <template>
   <div class="painel">
     <h2 class="painel-titulo">{{ titulo }}</h2>
-    <div class="painel-conteudo"></div>
+    <!-- Para exibir os campos do componente corretamente trocar div por slot -->
+    <slot class="painel-conteudo"></slot>
   </div>
 </template>
 
