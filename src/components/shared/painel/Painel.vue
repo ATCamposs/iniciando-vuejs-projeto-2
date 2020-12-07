@@ -1,8 +1,11 @@
 <template>
   <div class="painel">
-    <h2 class="painel-titulo">{{ titulo }}</h2>
+    <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h2>
     <!-- Para exibir os campos do componente corretamente trocar div por slot -->
-    <slot class="painel-conteudo"></slot>
+    <!-- v-show nao pode ser usado no slot, por isso a criação da div-->
+    <div v-show="visivel" class="painel-conteudo">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -13,6 +16,12 @@ export default {
       type: String,
       default: '',
     },
+  },
+
+  data() {
+    return {
+      visivel: true,
+    }
   },
 }
 </script>
