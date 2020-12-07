@@ -18,7 +18,12 @@
       >
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
-          <meu-botao tipo="button" rotulo="REMOVER" />
+          <!-- Ao adicionar .native no componente ele suporta ex @click -->
+          <meu-botao
+            tipo="button"
+            rotulo="REMOVER"
+            @click.native="remove(foto)"
+          />
         </meu-painel>
       </li>
     </ul>
@@ -68,6 +73,12 @@ export default {
       res.json().then((fotos) => (this.fotos = fotos))
     })
     */
+  },
+
+  methods: {
+    remove(foto) {
+      alert('Remover a foto' + foto.titulo)
+    },
   },
 }
 </script>
