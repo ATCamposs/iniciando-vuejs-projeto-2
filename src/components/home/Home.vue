@@ -18,7 +18,7 @@
       >
         <meu-painel v-meu-transform.reverse :titulo="foto.titulo">
           <imagem-responsiva
-            v-meu-transform.animate="15"
+            v-meu-transform:scale.animate="1.2"
             :url="foto.url"
             :titulo="foto.titulo"
           />
