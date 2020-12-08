@@ -12,7 +12,7 @@
       <div class="controle">
         <label for="url">URL</label>
         <input id="url" v-model.lazy="foto.url" autocomplete="off" />
-        <imagem-responsiva v-show="foto.url" :titulo="foto.titulo" />
+        <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
       </div>
 
       <div class="controle">
@@ -53,8 +53,10 @@ export default {
 
   methods: {
     grava() {
-      console.log(this.foto)
-      this.foto = new Foto()
+      this.$http.post('http://localhost:3000/v1/fotos', this.foto).then(
+        () => (this.foto = new Foto()),
+        (err) => console.log(err)
+      )
     },
   },
 }
