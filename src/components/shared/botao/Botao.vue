@@ -15,10 +15,12 @@ export default {
     tipo: {
       type: String,
       default: '',
+      required: true,
     },
     rotulo: {
       type: String,
       default: '',
+      required: true,
     },
     confirmacao: {
       type: Boolean,
