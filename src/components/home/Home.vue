@@ -2,7 +2,7 @@
   <div>
     <!-- posso usar também <h1>{{ titulo }}</h1>-->
     <h1 class="centralizado" v-text="titulo"></h1>
-
+    <p v-show="mensagem" class="centralizado">{{ mensagem }}</p>
     <input
       type="search"
       class="filtro"
@@ -71,7 +71,7 @@ export default {
   created() {
     // jeito mais facil
     this.$http
-      .get('http://localhost:3000/v1/fotos')
+      .get('v1/fotos')
       .then((res) => res.json())
       // eslint-disable-next-line no-sequences
       .then((fotos) => ((this.fotos = fotos), (err) => console.log(err)))
@@ -84,8 +84,18 @@ export default {
   },
 
   methods: {
-    remove($event, foto) {
-      alert('Remover a foto' + foto.titulo)
+    remove(foto) {
+      this.$http.delete(`v1/fotos/${foto._id}`).then(
+        () => {
+          const indice = this.fotos.indexOf(foto) // acha a posição da foto na lista
+          this.fotos.splice(indice, 1) // a instrução altera o array
+          this.mensagem = 'Foto removida com sucesso'
+        },
+        (err) => {
+          this.mensagem = 'Não foi possível remover a foto'
+          console.log(err)
+        }
+      )
     },
   },
 }

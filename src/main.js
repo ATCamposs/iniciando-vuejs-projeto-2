@@ -6,6 +6,8 @@ import { routes } from './routes'
 import './directives/Transform'
 
 Vue.use(VueResource)
+// adiciona caminho root para as requisições
+Vue.http.options.root = 'http://localhost:3000'
 // Criação do routes e chamada da rota
 Vue.use(VueRouter)
 const router = new VueRouter({

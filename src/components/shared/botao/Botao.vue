@@ -42,9 +42,10 @@ export default {
   methods: {
     disparaAcao() {
       if (this.confirmacao) {
-        if (confirm('Confirma operação ?')) {
+        if (confirm('Confirma operação?')) {
           this.$emit('botaoAtivado')
         }
+        return
       }
       this.$emit('botaoAtivado')
     },
