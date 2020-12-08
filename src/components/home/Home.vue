@@ -16,9 +16,9 @@
         :key="foto.titulo"
         class="lista-fotos-item"
       >
-        <meu-painel :titulo="foto.titulo">
+        <meu-painel v-meu-transform.reverse :titulo="foto.titulo">
           <imagem-responsiva
-            v-meu-transform="{ incremento: 15, animacao: true }"
+            v-meu-transform.animate="15"
             :url="foto.url"
             :titulo="foto.titulo"
           />
