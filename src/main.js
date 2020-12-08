@@ -3,6 +3,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import { routes } from './routes'
+import './directives/Transform'
 
 Vue.use(VueResource)
 // Criação do routes e chamada da rota
