@@ -6,22 +6,12 @@
     <form @submit.prevent="grava()">
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input
-          id="titulo"
-          autocomplete="off"
-          :value="foto.titulo"
-          @input="foto.titulo = $event.target.value"
-        />
+        <input id="titulo" v-model="foto.titulo" autocomplete="off" />
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-        <input
-          id="url"
-          autocomplete="off"
-          :value="foto.url"
-          @input="foto.url = $event.target.value"
-        />
+        <input id="url" v-model="foto.url" autocomplete="off" />
         <imagem-responsiva />
       </div>
 
@@ -29,9 +19,8 @@
         <label for="descricao">DESCRIÇÃO</label>
         <textarea
           id="descricao"
+          v-model="foto.descricao"
           autocomplete="off"
-          :value="foto.descricao"
-          @input="foto.descricao = $event.target.value"
         ></textarea>
       </div>
 
