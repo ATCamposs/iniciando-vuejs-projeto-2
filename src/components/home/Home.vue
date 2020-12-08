@@ -69,12 +69,18 @@ export default {
   },
 
   created() {
-    // jeito mais facil
-    this.$http
-      .get('v1/fotos')
+    // usando $resource
+    this.resource = this.$resource('v1/fotos{/id}')
+    this.resource
+      .query()
       .then((res) => res.json())
-      // eslint-disable-next-line no-sequences
       .then((fotos) => ((this.fotos = fotos), (err) => console.log(err)))
+    // jeito mais facil
+    // this.$http
+    //  .get('v1/fotos')
+    //  .then((res) => res.json())
+    // eslint-disable-next-line no-sequences
+    //  .then((fotos) => ((this.fotos = fotos), (err) => console.log(err)))
     /*
       jeito mais complexo
       promise.then((res) => {
@@ -85,7 +91,9 @@ export default {
 
   methods: {
     remove(foto) {
-      this.$http.delete(`v1/fotos/${foto._id}`).then(
+      // jeito antigo
+      // this.$http.delete(`v1/fotos/${foto._id}`)
+      this.resource.delete({ id: foto._id }).then(
         () => {
           const indice = this.fotos.indexOf(foto) // acha a posição da foto na lista
           this.fotos.splice(indice, 1) // a instrução altera o array
