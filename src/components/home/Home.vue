@@ -42,6 +42,7 @@
 import ImagemResponsiva from '../shared/imagem-responsiva/imagemResponsiva'
 import Painel from '../shared/painel/Painel'
 import Botao from '../shared/botao/Botao'
+import FotoService from '../../domain/foto/FotoService'
 export default {
   components: {
     'meu-painel': Painel,
@@ -69,11 +70,9 @@ export default {
   },
 
   created() {
-    // usando $resource
-    this.resource = this.$resource('v1/fotos{/id}')
-    this.resource
-      .query()
-      .then((res) => res.json())
+    this.service = new FotoService(this.$resource)
+    this.service
+      .lista()
       .then((fotos) => ((this.fotos = fotos), (err) => console.log(err)))
     // jeito mais facil
     // this.$http
@@ -93,7 +92,8 @@ export default {
     remove(foto) {
       // jeito antigo
       // this.$http.delete(`v1/fotos/${foto._id}`)
-      this.resource.delete({ id: foto._id }).then(
+      // this.resource.delete({ id: foto._id })
+      this.service.apaga(foto._id).then(
         () => {
           const indice = this.fotos.indexOf(foto) // acha a posição da foto na lista
           this.fotos.splice(indice, 1) // a instrução altera o array
