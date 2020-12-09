@@ -49,12 +49,17 @@ export default {
   data() {
     return {
       foto: new Foto(),
+      id: this.$route.params.id,
     }
   },
 
   created() {
     this.service = new FotoService(this.$resource)
-    this.resource = this.$resource('v1/fotos')
+    // this.resource = this.$resource('v1/fotos')
+
+    if (this.id) {
+      this.service.busca(this.id).then((foto) => (this.foto = foto))
+    }
   },
 
   methods: {
