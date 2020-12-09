@@ -7,6 +7,8 @@ import App from './App.vue'
 import { routes } from './routes'
 import './directives/Transform'
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 Vue.use(VueResource)
 // adiciona caminho root para as requisições
 Vue.http.options.root = 'http://localhost:3000'
