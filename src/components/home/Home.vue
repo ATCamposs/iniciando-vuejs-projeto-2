@@ -22,6 +22,9 @@
             :url="foto.url"
             :titulo="foto.titulo"
           />
+          <router-link :to="{ name: 'altera', params: { id: foto._id } }">
+            <meu-botao rotulo="Alterar" tipo="button" />
+          </router-link>
           <!-- Ao adicionar .native no componente ele suporta ex @click -->
           <!-- Ao usar databind(:) na confirmacao, o valor não vai como uma
           string, e sim como um dado, oque aceita outros tipos alem (de string) -->

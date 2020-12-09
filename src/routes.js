@@ -9,5 +9,12 @@ export const routes = [
     titulo: 'Cadastro',
     menu: true,
   },
+  {
+    path: '/cadastro/:id',
+    name: 'altera',
+    component: Cadastro,
+    titulo: 'Cadastro',
+    menu: false,
+  },
   { path: '*', component: Home, menu: false },
 ]
