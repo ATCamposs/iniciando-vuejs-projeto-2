@@ -68,7 +68,10 @@ export default {
       // this.$http.post('v1/fotos', this.foto)
       // this.resource.save(this.foto)
       this.service.cadastra(this.foto).then(
-        () => (this.foto = new Foto()),
+        () => {
+          if (this.id) this.$router.push({ name: 'home' })
+          this.foto = new Foto()
+        },
         (err) => console.log(err)
       )
     },
