@@ -58,6 +58,7 @@ export default {
       titulo: 'Banco de imagens de gatinhos',
       fotos: [],
       filtro: '',
+      mensagem: this.mensagem,
     }
   },
 
@@ -74,9 +75,12 @@ export default {
 
   created() {
     this.service = new FotoService(this.$resource)
-    this.service
-      .lista()
-      .then((fotos) => ((this.fotos = fotos), (err) => console.log(err)))
+    this.service.lista().then(
+      (fotos) => (this.fotos = fotos),
+      (err) => {
+        this.mensagem = err.message
+      }
+    )
     // jeito mais facil
     // this.$http
     //  .get('v1/fotos')
@@ -103,8 +107,7 @@ export default {
           this.mensagem = 'Foto removida com sucesso'
         },
         (err) => {
-          this.mensagem = 'Não foi possível remover a foto'
-          console.log(err)
+          this.mensagem = err.message
         }
       )
     },
