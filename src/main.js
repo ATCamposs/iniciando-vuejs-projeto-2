@@ -9,6 +9,8 @@ import './directives/Transform'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/css/teste.css'
+import './assets/js/teste.js'
+import 'bootstrap/dist/js/bootstrap.js'
 
 Vue.use(VueResource)
 // adiciona caminho root para as requisições
