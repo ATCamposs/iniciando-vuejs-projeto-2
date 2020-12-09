@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
+import VeeValidate from 'vee-validate'
 import App from './App.vue'
 import { routes } from './routes'
 import './directives/Transform'
@@ -15,6 +16,9 @@ const router = new VueRouter({
   // remove a # dos links
   mode: 'history',
 })
+
+Vue.use(VeeValidate)
+
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
