@@ -8,12 +8,33 @@
     <form @submit.prevent="grava()">
       <div class="controle">
         <label for="titulo">TÍTULO</label>
-        <input id="titulo" v-model="foto.titulo" autocomplete="off" />
+        <input
+          id="titulo"
+          v-model="foto.titulo"
+          v-validate
+          name="titulo"
+          data-vv-rules="required|min:3|max:30"
+          autocomplete="off"
+          data-vv-as="título"
+        />
+        <span v-show="errors.has('titulo')" class="erro">{{
+          errors.first('titulo')
+        }}</span>
       </div>
 
       <div class="controle">
         <label for="url">URL</label>
-        <input id="url" v-model.lazy="foto.url" autocomplete="off" />
+        <input
+          id="url"
+          v-model="foto.url"
+          v-validate
+          name="url"
+          data-vv-rules="required"
+          autocomplete="off"
+        />
+        <span v-show="errors.has('url')" class="erro">{{
+          errors.first('url')
+        }}</span>
         <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
       </div>
 
@@ -66,16 +87,18 @@ export default {
 
   methods: {
     grava() {
+      this.$validator.validateAll().then((success) => {
+        this.service.cadastra(this.foto).then(
+          () => {
+            if (this.id) this.$router.push({ name: 'home' })
+            this.foto = new Foto()
+          },
+          (err) => console.log(err)
+        )
+      })
       // jeito antigo
       // this.$http.post('v1/fotos', this.foto)
       // this.resource.save(this.foto)
-      this.service.cadastra(this.foto).then(
-        () => {
-          if (this.id) this.$router.push({ name: 'home' })
-          this.foto = new Foto()
-        },
-        (err) => console.log(err)
-      )
     },
   },
 }
